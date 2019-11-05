@@ -1,0 +1,53 @@
+{
+    "name": "data-simulator",
+    "version": "0.0.1",
+    "description": "A simple stupid model simulator application.",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:yroffin/data-simulator.git"
+    },
+    "keywords": [
+        "tsc-watch",
+        "api"
+    ],
+    "author": {
+        "name": "Yannick Roffin",
+        "email": "yroffin@gmail.com",
+        "url": "https://github.com/yroffin"
+    },
+    "contributors": [
+        {}
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/yroffin/data-simulator/issues"
+    },
+    "scripts": {
+        "js": "node dist/index.js",
+        "live": "npm run build:live",
+        "build": "tsc",
+        "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
+    },
+    "dependencies": {
+        "fastify": "2.9.0",
+        "lodash": "4.17.15",
+        "request": "2.88.0",
+        "inversify": "5.0.1",
+        "reflect-metadata": "0.1.13",
+        "quadstore": "6.0.1",
+        "leveldown": "5.4.1",
+        "winston": "3.2.1"
+    },
+    "devDependencies": {
+        "@types/lodash": "4.14.144",
+        "@types/node": "12.7.2",
+        "@types/request": "2.48.3",
+        "@types/mocha": "5.2.7",
+        "@types/winston": "2.4.4",
+        "nodemon": "1.19.3",
+        "ts-node": "8.4.1",
+        "tslint": "5.20.0",
+        "typescript": "3.6.2"
+    },
+    "homepage": "https://github.com/yroffin/clever-cloud"
+}

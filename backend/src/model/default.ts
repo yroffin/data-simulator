@@ -1,0 +1,7 @@
+class ModelA {
+
+}
+
+class ModelB {
+    
+}

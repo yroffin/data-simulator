@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["es6", "es2015.reflect"],
+        "types": ["reflect-metadata"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "sourceMap": true,
+        "baseUrl": ".",
+        "noImplicitAny": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "pretty": true,
+        "declaration":true,
+    },
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  } 
