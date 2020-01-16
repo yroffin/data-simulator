@@ -2,12 +2,15 @@ import { injectable, inject } from "inversify";
 import "reflect-metadata";
 import { Ctrl } from "../interface/controller";
 import { RouteShorthandOptions } from "fastify";
-import { Store } from "src/interface/store";
+import { Store } from "../interface/store";
+import { Parser } from "../interface/parser";
 
 @injectable()
 class DefaultCtrl implements Ctrl {
     @inject("Store")
     private store: Store;
+    @inject("Parser")
+    private parser: Parser;
 
     constructor() {
     }
@@ -42,9 +45,10 @@ class DefaultCtrl implements Ctrl {
     }
 
     async post(body: any): Promise<any> {
-        console.log(body);
-        await this.store.put([body]);
-        return this.store.get({graph: 'g'});
+        let result = await this.store.put([body]).catch((reason: any) => {
+            console.log('any', reason);
+        });
+        return this.store.get({graph: 'Customer'});
     }
 }
 

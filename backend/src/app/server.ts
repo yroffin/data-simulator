@@ -6,14 +6,17 @@ import { Server, IncomingMessage, ServerResponse } from "http";
 import { DefaultCtrl } from "../ctrl/default-controller";
 import { DefaultLogger } from "../service/default-logger";
 import { QuadStore } from "../service/quad-store";
-import { Store } from "src/interface/store";
-import { Logger } from "src/interface/logger";
+import { Store } from "../interface/store";
+import { Logger } from "../interface/logger";
+import { ModelCtrl } from "../ctrl/model-controller";
 
 @injectable()
 class WebServer implements ApplicationServer {
 
     @inject("DefaultCtrl")
     private defaultCtrl: DefaultCtrl;
+    @inject("ModelCtrl")
+    private modelCtrl: ModelCtrl;
     @inject("Logger")
     private logger: Logger;
 
@@ -31,6 +34,18 @@ class WebServer implements ApplicationServer {
     public listen() {
         this.server.post('/ping', this.defaultCtrl.schema(), async (request, reply) => {
             let payload = await this.defaultCtrl.post(request.body);
+            reply.code(200).send(JSON.stringify(payload));
+        })
+
+        this.server.post('/api/model/validate', this.modelCtrl.schema(), async (request, reply) => {
+            console.log('ping')
+            let payload = await this.modelCtrl.modelValidate(request.body);
+            reply.code(200).send(JSON.stringify(payload));
+        })
+
+        this.server.post('/api/model/dump', this.modelCtrl.schema(), async (request, reply) => {
+            console.log('ping')
+            let payload = await this.modelCtrl.modelDump(request.body);
             reply.code(200).send(JSON.stringify(payload));
         })
 

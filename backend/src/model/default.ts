@@ -1,7 +1,0 @@
-class ModelA {
-
-}
-
-class ModelB {
-    
-}

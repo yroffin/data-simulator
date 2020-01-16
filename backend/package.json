@@ -36,7 +36,9 @@
         "reflect-metadata": "0.1.13",
         "quadstore": "6.0.1",
         "leveldown": "5.4.1",
-        "winston": "3.2.1"
+        "winston": "3.2.1",
+        "ebnf": "1.6.3",
+        "dataloader": "2.0.0"
     },
     "devDependencies": {
         "@types/lodash": "4.14.144",
