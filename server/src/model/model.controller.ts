@@ -16,6 +16,7 @@ export class ModelController {
         return this.modelService.validate(body);
     }
 
+    
     @Post('/render')
     @ApiOperation({
         description: 'Render this model',
