@@ -243,7 +243,11 @@ export class ModelService {
             async (subjectPredicateValue: any) => {
                 switch (subjectPredicateValue.type) {
                     case "predicate":
-                        return undefined;
+                        let predicate = await this.toJsonString(aliasLoader, subjectPredicateValue);
+                        return `{"predicate": ${predicate}}`;
+                    case "subject":
+                        let subject = await this.toJsonString(aliasLoader, subjectPredicateValue);
+                        return `{"subject": ${subject}}`;
                     case "value":
                         let value = await this.toJsonString(aliasLoader, subjectPredicateValue);
                         return `{"value": ${value}}`;
@@ -263,6 +267,33 @@ export class ModelService {
      * loader
      * @param text 
      */
+    public async toJsonFormat(text: string): Promise<string> {
+        let compiled = await this.toJson(text);
+        let aggregated = [];
+        let predicate;
+        let subject;
+        _.each(JSON.parse(compiled), (item) => {
+            if(item.predicate) {
+                predicate = item.predicate;
+                return;
+            }
+            if(item.subject) {
+                subject = item.subject;
+                return;
+            }
+            aggregated.push({
+                predicate: predicate,
+                subject: subject,
+                object: item.value
+            });
+        });
+        return JSON.stringify(aggregated);
+    }
+
+    /**
+     * loader
+     * @param text 
+     */
     public async toJson(text: string): Promise<string> {
         // Validate all data
         let ast: AstTree = await this.validate(text);
@@ -274,6 +305,7 @@ export class ModelService {
                 }));
             }
         );
+        // iterate on list to aggregate a tripple predicate, subject, value
         return this.decode(aliasLoader, ast);
     }
 

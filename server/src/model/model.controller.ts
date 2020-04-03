@@ -23,6 +23,6 @@ export class ModelController {
     })
     @ApiResponse({ status: 200, type: Boolean })
     render(@PlainBody() body: string) {
-        return this.modelService.toJson(body);
+        return this.modelService.toJsonFormat(body);
     }
 }
