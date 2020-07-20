@@ -43,7 +43,7 @@
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.4.2",
     "properties": "^1.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "leveldown": "5.4.1",
     "ebnf": "1.6.3",
     "dataloader": "2.0.0"
