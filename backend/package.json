@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "fastify": "2.9.0",
-        "lodash": "4.17.15",
+        "lodash": "4.17.21",
         "request": "2.88.0",
         "inversify": "5.0.1",
         "reflect-metadata": "0.1.13",
